@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://levels/blocks/rubber.gd" type="Script" id=1]
+
+[node name="rubber" type="Area2D"]
+collision_layer = 16
+script = ExtResource( 1 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+[connection signal="area_entered" from="." to="." method="_on_rubber_area_entered"]
+[connection signal="area_exited" from="." to="." method="_on_rubber_area_exited"]

@@ -1,0 +1,40 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://levels/power ups/sizedown.gd" type="Script" id=1]
+[ext_resource path="res://levels/power ups/size_down.png" type="Texture" id=2]
+[ext_resource path="res://sound/size.wav" type="AudioStream" id=3]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 20.5849, 61.7169 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 27.3197, 63.9618 )
+
+[node name="sizeDown" type="StaticBody2D"]
+scale = Vector2( 0.5, 0.5 )
+collision_layer = 128
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 4.48987, 0 )
+shape = SubResource( 1 )
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2( 6.73477, -1.12247 )
+shape = SubResource( 2 )
+
+[node name="audio" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 3 )
+volume_db = -15.0
+pitch_scale = 0.7
+max_distance = 500.0
+[connection signal="area_entered" from="Area2D" to="." method="_on_Area2D_area_entered"]
+[connection signal="finished" from="audio" to="." method="_on_AudioStreamPlayer2D_finished"]

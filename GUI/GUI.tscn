@@ -1,0 +1,73 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://GUI/ring.png" type="Texture" id=1]
+[ext_resource path="res://GUI/ball.png" type="Texture" id=2]
+[ext_resource path="res://GUI/GUI.gd" type="Script" id=3]
+[ext_resource path="res://GUI/bckground.png" type="Texture" id=4]
+
+[sub_resource type="DynamicFontData" id=1]
+font_path = "res://GUI/Fipps-Regular.otf"
+
+[sub_resource type="DynamicFont" id=2]
+size = 18
+font_data = SubResource( 1 )
+
+[sub_resource type="DynamicFontData" id=3]
+font_path = "res://GUI/Fipps-Regular.otf"
+
+[sub_resource type="DynamicFont" id=4]
+size = 18
+font_data = SubResource( 3 )
+
+[node name="GUI" type="CanvasLayer"]
+script = ExtResource( 3 )
+
+[node name="ring" type="HBoxContainer" parent="."]
+margin_left = 115.0
+margin_top = 13.015
+margin_right = 149.0
+margin_bottom = 59.015
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ring" type="TextureRect" parent="ring"]
+margin_right = 16.0
+margin_bottom = 46.0
+texture = ExtResource( 1 )
+
+[node name="rings" type="Label" parent="ring"]
+margin_left = 20.0
+margin_right = 34.0
+margin_bottom = 46.0
+size_flags_horizontal = 3
+custom_fonts/font = SubResource( 2 )
+
+[node name="health" type="HBoxContainer" parent="."]
+margin_left = 14.0
+margin_top = 13.0
+margin_right = 94.0
+margin_bottom = 59.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ball" type="TextureRect" parent="health"]
+margin_right = 35.0
+margin_bottom = 46.0
+texture = ExtResource( 2 )
+
+[node name="health" type="Label" parent="health"]
+margin_left = 39.0
+margin_right = 80.0
+margin_bottom = 46.0
+size_flags_horizontal = 3
+custom_fonts/font = SubResource( 4 )
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="Sprite" type="Sprite" parent="ParallaxBackground"]
+position = Vector2( 940, 525 )
+scale = Vector2( 50, 50 )
+z_index = -1
+texture = ExtResource( 4 )

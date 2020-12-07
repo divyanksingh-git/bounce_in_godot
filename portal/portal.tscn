@@ -1,0 +1,48 @@
+[gd_scene load_steps=14 format=2]
+
+[ext_resource path="res://portal/p6.png" type="Texture" id=1]
+[ext_resource path="res://portal/p7.png" type="Texture" id=2]
+[ext_resource path="res://portal/p3.png" type="Texture" id=3]
+[ext_resource path="res://portal/p8.png" type="Texture" id=4]
+[ext_resource path="res://portal/p1.png" type="Texture" id=5]
+[ext_resource path="res://portal/p5.png" type="Texture" id=6]
+[ext_resource path="res://portal/p4.png" type="Texture" id=7]
+[ext_resource path="res://portal/p9.png" type="Texture" id=8]
+[ext_resource path="res://portal/p2.png" type="Texture" id=9]
+[ext_resource path="res://portal/portal.gd" type="Script" id=10]
+[ext_resource path="res://sound/portal.wav" type="AudioStream" id=11]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 5 ), ExtResource( 9 ), ExtResource( 3 ), ExtResource( 7 ), ExtResource( 6 ), ExtResource( 1 ), ExtResource( 2 ), ExtResource( 4 ), ExtResource( 8 ) ],
+"loop": true,
+"name": "portal",
+"speed": 25.0
+} ]
+
+[sub_resource type="CapsuleShape2D" id=2]
+radius = 51.3425
+height = 179.315
+
+[node name="portal" type="Area2D"]
+z_index = -1
+collision_layer = 512
+script = ExtResource( 10 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+frames = SubResource( 1 )
+animation = "portal"
+frame = 1
+playing = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 21, -2 )
+shape = SubResource( 2 )
+
+[node name="audio" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 11 )
+[connection signal="area_entered" from="." to="." method="_on_portal_area_entered"]
+[connection signal="finished" from="audio" to="." method="_on_audio_finished"]
